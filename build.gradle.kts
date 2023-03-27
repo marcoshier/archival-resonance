@@ -2,7 +2,6 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.gradle.internal.os.OperatingSystem
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 group = "org.openrndr.template"
 version = "0.4.0"
 
@@ -10,7 +9,7 @@ val applicationMainClass = "TemplateProgramKt"
 
 /**  ## additional ORX features to be added to this project */
 val orxFeatures = setOf<String>(
-//  "orx-boofcv",
+    "orx-boofcv",
     "orx-camera",
 //  "orx-chataigne",
     "orx-color",
@@ -28,10 +27,11 @@ val orxFeatures = setOf<String>(
 //  "orx-integral-image",
 //  "orx-interval-tree",
 //  "orx-jumpflood",
-//  "orx-kdtree",
+    "orx-kdtree",
 //  "orx-keyframer",      
 //  "orx-kinect-v1",
 //  "orx-kotlin-parser",
+    "orx-marching-squares",
 //  "orx-mesh-generators",
 //  "orx-midi",
 //  "orx-minim",
@@ -51,8 +51,8 @@ val orxFeatures = setOf<String>(
 //  "orx-shader-phrases",
     "orx-shapes",
 //  "orx-syphon",
-//  "orx-temporal-blur",
-//  "orx-tensorflow",    
+  "orx-temporal-blur",
+    "orx-tensorflow",
 //  "orx-time-operators",
 //  "orx-timer",
 //  "orx-triangulation",
@@ -63,11 +63,11 @@ val orxFeatures = setOf<String>(
 /** ## additional ORML features to be added to this project */
 val ormlFeatures = setOf<String>(
 //    "orml-blazepose",
-//    "orml-dbface",
-//    "orml-facemesh",
+ //     "orml-dbface",
+//      "orml-facemesh",
 //    "orml-image-classifier",
 //    "orml-psenet",
-//    "orml-ssd",
+//      "orml-ssd",
 //    "orml-style-transfer",
 //    "orml-super-resolution",
 //    "orml-u2net",
@@ -96,13 +96,15 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven { setUrl("https://jitpack.io") }
 }
 
 dependencies {
 
-//    implementation(libs.jsoup)
-//    implementation(libs.gson)
-//    implementation(libs.csv)
+    implementation(libs.jsoup)
+    implementation(libs.gson)
+    implementation("com.github.jkcclemens:khttp:0.1.0")
+    implementation(libs.csv)
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.slf4j.api)
